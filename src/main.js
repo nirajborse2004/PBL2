@@ -30,12 +30,28 @@ AFRAME.registerComponent('navigate-waypoints', {
         currentWaypointIndex++;
         console.log("Waypoint Reached. Moving to next waypoint.");
       } else {
-        arrow.setAttribute("position", `${currentWaypoint.position.x} 0 ${currentWaypoint.position.z}`);
+        // Smooth Movement towards the waypoint
+        this.moveArrow(currentWaypoint.position);
       }
     } else if (currentWaypointIndex >= waypoints.length) {
       console.log("Destination Reached!");
       arrow.setAttribute("visible", false);
     }
+  },
+  moveArrow: function (targetPosition) {
+    const arrowPosition = arrow.object3D.position;
+    const speed = 0.05;  // Adjust speed as needed
+
+    // Calculate new position for smooth movement
+    arrowPosition.x += (targetPosition.x - arrowPosition.x) * speed;
+    arrowPosition.z += (targetPosition.z - arrowPosition.z) * speed;
+
+    // Update arrow's position
+    arrow.setAttribute("position", `${arrowPosition.x} 0.5 ${arrowPosition.z}`);
+
+    // Rotate the arrow to face the next waypoint
+    const angle = Math.atan2(targetPosition.z - arrowPosition.z, targetPosition.x - arrowPosition.x);
+    arrow.setAttribute("rotation", `0 ${-THREE.Math.radToDeg(angle)} 0`);
   },
   calculateDistance: function (pos1, pos2) {
     const dx = pos1.x - pos2.x;
