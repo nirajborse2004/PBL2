@@ -4,21 +4,15 @@
     <title>AR.js Location-Based Navigation</title>
     <!-- Include A-Frame and AR.js -->
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/ar-js-org@3.3.2/aframe/build/aframe-ar.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/ar-js-org@3.3.2/aframe/build/aframe-ar.js"></script>
     <link rel="stylesheet" href="style.css">
   </head>
   <body style="margin: 0; overflow: hidden;">
     <!-- AR.js Scene with Location-Based AR -->
     <a-scene embedded arjs>
       <!-- Marker for Starting Point -->
-      <a-marker type="pattern" url="assets/markers/start-marker.patt">
+      <a-marker type="pattern" url="assets/markers/start-marker.patt" navigate-waypoints>
         <a-cone position="0 0.5 0" rotation="0 0 0" scale="0.3 0.5 0.3" color="red" visible="false" id="arrow"></a-cone>
-
-       
-          
-
-        </a-entity>
       </a-marker>
 
       <!-- Floor Map -->
@@ -26,15 +20,9 @@
 
       <!-- Camera -->
       <a-entity camera></a-entity>
-
-      <a-marker type="pattern" url="assets/markers/start-marker.patt" navigate-waypoints>
-        
-
     </a-scene>
 
     <!-- Include Main JS -->
     <script type="module" src="src/main.js"></script>
-
   </body>
 </html>
-
