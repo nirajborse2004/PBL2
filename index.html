@@ -13,8 +13,10 @@
     <a-scene embedded arjs>
       <!-- Marker for Starting Point -->
       <a-marker type="pattern" url="assets/markers/start-marker.patt">
-        <!a-entity id="arrow" gltf-model="url(assets/models/arrow.glb)" position="0 0 0" scale="0.5 0.5 0.5" visible="false">
-          <a-box position="0 0.5 0" scale="0.5 0.5 0.5" color="red"></a-box>
+        <a-cone position="0 0.5 0" rotation="0 0 0" scale="0.3 0.5 0.3" color="red" visible="false" id="arrow"></a-cone>
+
+       
+          
 
         </a-entity>
       </a-marker>
