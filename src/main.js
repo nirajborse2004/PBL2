@@ -1,4 +1,4 @@
-import { waypoints } from "../config.js";
+
 console.log("code issss")
 
 let currentWaypointIndex = 0;
